@@ -1,0 +1,11 @@
+:root {
+  color-scheme: light dark;
+  --bg: light-dark(#dddddd, #555555);
+  --text: light-dark(#555555, #dddddd);
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, sans-serif;
+}
