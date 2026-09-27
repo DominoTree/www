@@ -5,7 +5,9 @@
 }
 
 body {
-  background: var(--bg);
-  color: var(--text);
+  /*  background: var(--bg);  */
+  /*  color: var(--text);  */
+  display: grid;
+  grid-template-columns: 16rem 1fr;
   font-family: system-ui, sans-serif;
 }

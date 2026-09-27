@@ -12,9 +12,16 @@
   </head>
 
   <body>
-    {% if title %}
-      <h1>{{ title }}</h1>
-    {% endif %}
-    <main>{{ content }}</main>
+    <header></header>
+    <aside class="sidebar">
+      {% include 'partials/sidebar.liquid' %}
+    </aside>
+    <main>
+      {% if title %}
+        <h1>{{ title }}</h1>
+      {% endif %}
+      {{ content }}
+    </main>
+    <footer></footer>
   </body>
 </html>
