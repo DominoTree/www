@@ -12,7 +12,7 @@
   </head>
 
   <body>
-    <header>BRUH</header>
+    <header>{{ site.title }}</header>
     <aside class="sidebar">
       {% include 'partials/sidebar.liquid' %}
     </aside>
@@ -22,6 +22,8 @@
       {% endif %}
       {{ content }}
     </main>
-    <footer>OMG</footer>
+    <footer>
+      <i>Updated {{ 'now' | date: '%B %-d, %Y at %H:%M:%S GMT', 0 }}</i>
+    </footer>
   </body>
 </html>
