@@ -4,12 +4,19 @@
   --text: light-dark(#454545, #e3e3e3);
 }
 
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
 body {
   background: var(--bg);
   color: var(--text);
   font-family: system-ui, sans-serif;
 
-  min-height: 100dvh;
+  margin: 1rem;
+  min-height: calc(100dvh - 2rem);
 
   display: grid;
   grid-template-columns: 16rem 1fr;
