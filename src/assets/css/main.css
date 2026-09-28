@@ -1,12 +1,12 @@
 :root {
   color-scheme: light dark;
-  --bg: light-dark(#dddddd, #555555);
-  --text: light-dark(#555555, #dddddd);
+  --bg: light-dark(#e3e3e3, #454545);
+  --text: light-dark(#454545, #e3e3e3);
 }
 
 body {
-  /*  background: var(--bg);  */
-  /*  color: var(--text);  */
+  background: var(--bg);
+  color: var(--text);
   font-family: system-ui, sans-serif;
 
   margin: 0;
