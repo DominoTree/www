@@ -5,8 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="color-scheme" content="light dark">
     <title>
-      {% if title %}{{ title }} - {% endif %}
-      {{ site.title }}
+      {{- site.title -}}
+      {%- if title -%}
+        /{{- title -}}
+      {%- endif -%}
     </title>
     <link rel="stylesheet" href="/assets/css/main.css">
   </head>
