@@ -51,3 +51,7 @@ code,
 pre {
   background-color: #e3d3d3;
 }
+
+pre {
+  width: fit-content;
+}

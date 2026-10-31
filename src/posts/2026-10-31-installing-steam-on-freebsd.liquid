@@ -28,10 +28,14 @@ was an AMD Radeon RX6900XT.
   Following this, a few config tweaks are needed. First, <code>sysrc linux_enable=yes</code> to enable the Linuxulator.
   To make this take effect immediately, you can do <code>kldload linux.so; kldload linux64.so</code>.
 </p>
+
 <p>
   Next, we will add some lines to <code>/etc/sysctl.conf</code>:
-  <pre>security.bsd.unprivileged_chroot=1
+
+  <pre>
+security.bsd.unprivileged_chroot=1
 compat.linux.default_openfiles=65535</pre>
+
   Once these are added, run <code>sysctl -f /etc/sysctl.conf</code> for them to take effect immediately.
 </p>
 
