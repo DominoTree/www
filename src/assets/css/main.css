@@ -47,7 +47,7 @@ a {
   color: #0000ff;
 }
 
-code {
-  background-color: #ffffff;
+code,
+pre {
+  background-color: #e3d3d3;
 }
-

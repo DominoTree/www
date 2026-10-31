@@ -3,8 +3,10 @@ layout: layouts/base.liquid
 title: Installing Steam on FreeBSD
 date: 2026-10-31
 ---
-
-There have been myriad write-ups about how to accomplish this, but this is the most seamless and effective setup I have found thus far. This guide assumes that you have some sort of graphical desktop already up and running on your system.
+There have been myriad write-ups about how to accomplish this, but this is the most seamless and effective setup I have
+found thus far. This guide assumes that you have some sort of accelerated graphical desktop already up and running on
+your system. There are already a number of great guides out there to accomplish this. The GPU used in writing this guide
+was an AMD Radeon RX6900XT.
 
 <h3>Contents:</h3>
 
@@ -16,9 +18,22 @@ There have been myriad write-ups about how to accomplish this, but this is the m
 
 <h2>Set up the Host</h2>
 
-<p>This process is fairly straightforward and just involves a couple configuration tweaks and package installations. For packages, we will install <code>pkg install doas linux_base-rl9 linux-rl9-vulkan linux-steam-utils pulseaudio</code>. Some of these may pull each other in or already come with your window manager.</p>
+<p>
+  This process is fairly straightforward and just involves a couple configuration tweaks and package installations. For
+  packages, we will install <code>pkg install doas linux_base-rl9 linux-rl9-vulkan linux-steam-utils pulseaudio</code>.
+  Some of these may pull each other in or already come with your window manager.
+</p>
 
-<p>Following this, a simple <code>sysrc linux_enable=yes</code> should do the trick.To make this take effect immediately, you can do <code>kldload linux.so; kldload linux64.so</code>.</p>
+<p>
+  Following this, a few config tweaks are needed. First, <code>sysrc linux_enable=yes</code> to enable the Linuxulator.
+  To make this take effect immediately, you can do <code>kldload linux.so; kldload linux64.so</code>.
+</p>
+<p>
+  Next, we will add some lines to <code>/etc/sysctl.conf</code>:
+  <pre>security.bsd.unprivileged_chroot=1
+compat.linux.default_openfiles=65535</pre>
+  Once these are added, run <code>sysctl -f /etc/sysctl.conf</code> for them to take effect immediately.
+</p>
 
 <h2>Set up the Jail</h2>
 
@@ -26,4 +41,20 @@ There have been myriad write-ups about how to accomplish this, but this is the m
 
 <h3>Notes:</h3>
 
-<p>127.0.0.1 should be in your jail's address list, and your jail's primary IP should not be shared with any other jail.</p> <p>A FreeBSD jail without 127.0.0.1 in its address list has its loopback traffic rewritten to use the jail's primary address. Steam rejects this traffic because it appears to come from a non-loopback address. If you are getting persistent "Unexpected transport error" messages, this is likely the cause. FreeBSD only allows jails to share a single address from one family, so if your jail's primary IP is already being shared, you cannot share the loopback address.</p>
+<p>
+  For best results, make sure your <code>pkg(8)</code> repos are pointing at <code>current</code> instead of
+  <code>quarterly</code>.
+</p>
+
+<p>
+  <code>127.0.0.1</code> should be in your jail's address list, and your jail's primary IP should not be shared with any
+  other jail.
+</p>
+<p>
+  A FreeBSD jail without <code>127.0.0.1</code> in its address list has its loopback traffic rewritten to use the jail's
+  primary address. Steam rejects this traffic because it appears to come from a non-loopback address. If you are getting
+  persistent <code>Unexpected transport error</code> messages, this is likely the cause. FreeBSD only allows jails to
+  share a single address from one family, so if your jail's primary IP is already being shared, you cannot share the
+  loopback address.
+</p>
+
