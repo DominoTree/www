@@ -22,6 +22,10 @@
       {% if title %}
         <h1>{{ title }}</h1>
       {% endif %}
+      {% if date %}
+        <p><i>{{ date | date: '%B %-d, %Y', 0 }}</i></p>
+      {% endif %}
+
       {{ content }}
     </main>
     <footer>

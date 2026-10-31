@@ -42,3 +42,12 @@ main {
 footer {
   grid-area: footer;
 }
+
+a {
+  color: #0000ff;
+}
+
+code {
+  background-color: #ffffff;
+}
+

@@ -1,0 +1,29 @@
+---
+layout: layouts/base.liquid
+title: Installing Steam on FreeBSD
+date: 2026-10-31
+---
+
+There have been myriad write-ups about how to accomplish this, but this is the most seamless and effective setup I have found thus far. This guide assumes that you have some sort of graphical desktop already up and running on your system.
+
+<h3>Contents:</h3>
+
+<ul>
+  <li>Set up the Linuxulator</li>
+  <li>Set up the Jail</li>
+  <li>Custom Configuration</li>
+</ul>
+
+<h2>Set up the Linuxulator</h2>
+
+<h3>Host Prerequisites</h3>
+
+<p><code>lol</code></p>
+
+<h2>Set up the Jail</h2>
+
+<h2>Custom Configuration</h2>
+
+<h3>Notes:</h3>
+
+<p>127.0.0.1 should be in your jail's address list, and your jail's primary IP should not be shared with any other jail.</p> <p>A FreeBSD jail without 127.0.0.1 in its address list has its loopback traffic rewritten to use the jail's primary address. Steam rejects this traffic because it appears to come from a non-loopback address. If you are getting persistent "Unexpected transport error" messages, this is likely the cause. FreeBSD only allows jails to share a single address from one family, so if your jail's primary IP is already being shared, you cannot share the loopback address.</p>
